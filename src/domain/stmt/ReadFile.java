@@ -46,7 +46,7 @@ public class ReadFile implements IStmt, Serializable {
 		} catch (Exception e) {
 			throw new MyException(e.getMessage());
 		}
-		return state;
+		return null;
 	}
 	
 	@Override

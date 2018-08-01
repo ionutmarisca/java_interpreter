@@ -31,7 +31,7 @@ public class IfStmt implements IStmt, Serializable {
 			stack.push(thenS);
 		else
 			stack.push(elseS);
-		return state;
+		return null;
 	}
 	
 	@Override

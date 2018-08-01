@@ -29,7 +29,7 @@ public class HeapWriting implements IStmt, Serializable {
 			heap.update(address, value);
 		else
 			throw new MyException("Invalid address!");
-		return state;
+		return null;
 	}
 	
 	@Override

@@ -43,7 +43,7 @@ public class OpenRFile implements IStmt, Serializable {
 		} catch (FileNotFoundException e1) {
 			throw new MyException("Couldn't create the BufferedReader.");
 		}
-		return state;
+		return null;
 	}
 	
 	@Override

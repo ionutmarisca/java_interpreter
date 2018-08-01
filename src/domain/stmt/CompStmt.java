@@ -22,7 +22,7 @@ public class CompStmt implements IStmt, Serializable {
 		MyIStack<IStmt> stack = state.getExeStack();
 		stack.push(second);
 		stack.push(first);
-		return state;
+		return null;
 	}
 
 	@Override

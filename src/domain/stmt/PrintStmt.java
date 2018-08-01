@@ -24,7 +24,7 @@ public class PrintStmt implements IStmt, Serializable {
 		MyIDictionary<String,Integer> symTable = state.getSymTable();
 		MyIDictionary<Integer,Integer> heap = state.getHeap();
 		queue.add(expression.eval(symTable,heap));
-		return state;
+		return null;
 	}
 
 	@Override

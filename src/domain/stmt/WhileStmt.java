@@ -29,7 +29,7 @@ public class WhileStmt implements IStmt, Serializable {
 			stack.push(this);
 			stack.push(statement);
 		}
-		return state;
+		return null;
 	}
 	
 	@Override

@@ -34,7 +34,7 @@ public class CloseRFile implements IStmt, Serializable {
 		} catch (IOException e) {
 			throw new MyException("Cannot close BufferedReader.");
 		}
-		return state;
+		return null;
 	}
 	
 	@Override

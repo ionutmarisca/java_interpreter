@@ -30,7 +30,7 @@ public class HeapAllocation implements IStmt, Serializable {
 			symTable.update(var_name, unique_key);
 		else 
 			symTable.add(var_name, unique_key);
-		return state;
+		return null;
 	}
 	
 	@Override

@@ -8,6 +8,7 @@ import domain.adt.MyIList;
 import domain.adt.MyIStack;
 import domain.adt.MyTuple;
 import domain.stmt.IStmt;
+import exception.MyException;
 
 public class PrgState implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -17,7 +18,9 @@ public class PrgState implements Serializable {
 	MyIDictionary<Integer, MyTuple<String, BufferedReader>> fileTable;
 	MyIDictionary<Integer, Integer> heap;
 	IStmt originalProgram;
-	 
+	int id;
+	static int i = 0;
+	
 	PrgState() {}
 	 
 	public PrgState(MyIStack<IStmt> stack, MyIDictionary<String,Integer> symTable, MyIList<Integer> out, MyIDictionary<Integer, MyTuple<String, BufferedReader>> fileTable, MyIDictionary<Integer, Integer> heap, IStmt program){
@@ -27,6 +30,7 @@ public class PrgState implements Serializable {
 		this.originalProgram = program;
 		this.fileTable = fileTable;
 		this.heap = heap;
+		id=i++;
 		exeStack.push(program);
 	}
 	 
@@ -78,7 +82,24 @@ public class PrgState implements Serializable {
 		this.originalProgram = originalProgram;
 	}
 	
-	public String toString() {
-		return "ExeStack:\n" + exeStack.toString() + "Sym Table:\n" + symTable.toString() + "Print output:\n" + out.toString() + "FileTable:\n" + fileTable.toString() + "Heap:\n" + heap.toString();
+	public int getId() {
+		return id;
 	}
+	
+	public String toString() {
+		return "ID:\n" + Integer.toString(id) + "ExeStack:\n" + exeStack.toString() + "Sym Table:\n" + symTable.toString() + "Print output:\n" + out.toString() + "FileTable:\n" + fileTable.toString() + "Heap:\n" + heap.toString();
+	}
+	
+	public boolean isNotCompleted() {
+		if(this.exeStack.isEmpty())
+			return false;
+		return true;
+	}
+	
+	public PrgState oneStep() throws MyException {
+		 if(this.exeStack.isEmpty()) throw new MyException("Reached the end of the program!");
+		 IStmt crtStmt = exeStack.pop();
+		 return crtStmt.execute(this);
+	}
+
 }
